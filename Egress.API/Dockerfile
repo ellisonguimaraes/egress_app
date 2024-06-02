@@ -22,4 +22,5 @@ RUN dotnet publish "Egress.API.csproj" -c Release -o /app/publish /p:UseAppHost=
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN mkdir files
 ENTRYPOINT ["dotnet", "Egress.API.dll"]
