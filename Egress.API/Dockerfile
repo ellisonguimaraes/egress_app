@@ -1,4 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+RUN mkdir files
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -20,7 +21,6 @@ FROM build AS publish
 RUN dotnet publish "Egress.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-RUN mkdir files
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Egress.API.dll"]
