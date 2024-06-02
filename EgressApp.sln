@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egress.API", "Egress.API\Egress.API.csproj", "{84F1E334-335D-4352-953E-AE7EC4B1C482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egress.Application", "Egress.Application\Egress.Application.csproj", "{628492F5-8D47-44CE-A58F-A1BB88702BB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egress.Domain", "Egress.Domain\Egress.Domain.csproj", "{0DF344F2-68C4-4F88-B0E8-0A80CBDA3523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Egress.Infra", "Egress.Infra", "{D70410A0-1DEF-49C2-8659-CE72F176BFF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egress.Infra.Data", "Egress.Infra\Egress.Infra.Data\Egress.Infra.Data.csproj", "{38F6275B-8366-4D8D-A3B1-E28213BD190A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egress.Infra.CrossCutting.IoC", "Egress.Infra\Egress.Infra.CrossCutting.IoC\Egress.Infra.CrossCutting.IoC.csproj", "{6D009D43-D0B2-4F84-80DC-81EC006C0E75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egress.Infra.CrossCutting.Resource", "Egress.Infra\Egress.Infra.CrossCutting.Resource\Egress.Infra.CrossCutting.Resource.csproj", "{834D9832-E8B1-425A-B117-352E1C62EF30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CD0D98D0-85DA-4A1B-8999-F4EC1864275C}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84F1E334-335D-4352-953E-AE7EC4B1C482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F1E334-335D-4352-953E-AE7EC4B1C482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F1E334-335D-4352-953E-AE7EC4B1C482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F1E334-335D-4352-953E-AE7EC4B1C482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{628492F5-8D47-44CE-A58F-A1BB88702BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{628492F5-8D47-44CE-A58F-A1BB88702BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{628492F5-8D47-44CE-A58F-A1BB88702BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{628492F5-8D47-44CE-A58F-A1BB88702BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF344F2-68C4-4F88-B0E8-0A80CBDA3523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF344F2-68C4-4F88-B0E8-0A80CBDA3523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF344F2-68C4-4F88-B0E8-0A80CBDA3523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF344F2-68C4-4F88-B0E8-0A80CBDA3523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F6275B-8366-4D8D-A3B1-E28213BD190A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F6275B-8366-4D8D-A3B1-E28213BD190A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F6275B-8366-4D8D-A3B1-E28213BD190A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F6275B-8366-4D8D-A3B1-E28213BD190A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D009D43-D0B2-4F84-80DC-81EC006C0E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D009D43-D0B2-4F84-80DC-81EC006C0E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D009D43-D0B2-4F84-80DC-81EC006C0E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D009D43-D0B2-4F84-80DC-81EC006C0E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834D9832-E8B1-425A-B117-352E1C62EF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834D9832-E8B1-425A-B117-352E1C62EF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834D9832-E8B1-425A-B117-352E1C62EF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834D9832-E8B1-425A-B117-352E1C62EF30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{38F6275B-8366-4D8D-A3B1-E28213BD190A} = {D70410A0-1DEF-49C2-8659-CE72F176BFF3}
+		{6D009D43-D0B2-4F84-80DC-81EC006C0E75} = {D70410A0-1DEF-49C2-8659-CE72F176BFF3}
+		{834D9832-E8B1-425A-B117-352E1C62EF30} = {D70410A0-1DEF-49C2-8659-CE72F176BFF3}
+	EndGlobalSection
+EndGlobal

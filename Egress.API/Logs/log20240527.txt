@@ -1,0 +1,44 @@
+2024-05-27 04:12:04.103 +00:00 [INF] Now listening on: http://[::]:80
+2024-05-27 04:12:04.126 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-27 04:12:04.126 +00:00 [INF] Hosting environment: Development
+2024-05-27 04:12:04.126 +00:00 [INF] Content root path: /app/
+2024-05-27 04:12:25.859 +00:00 [INF] Now listening on: http://[::]:80
+2024-05-27 04:12:25.883 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-27 04:12:25.883 +00:00 [INF] Hosting environment: Development
+2024-05-27 04:12:25.883 +00:00 [INF] Content root path: /app/
+2024-05-27 04:13:35.995 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/v1/course - -
+2024-05-27 04:13:36.035 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 04:13:36.051 +00:00 [INF] Executing endpoint 'Egress.API.Controllers.CourseController.GetAllAsync (Egress.API)'
+2024-05-27 04:13:36.071 +00:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync() on controller Egress.API.Controllers.CourseController (Egress.API).
+2024-05-27 04:13:42.003 +00:00 [INF] Handling GetAllCoursesQuery, TraceId: 00-456d06ae5d32bb27ae37d245a45c1b6d-5edde7575146811e-00, 
+2024-05-27 04:13:42.480 +00:00 [WRN] No store type was specified for the decimal property 'SalaryRange' on entity type 'Employment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-05-27 04:13:42.571 +00:00 [INF] Entity Framework Core 6.0.11 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.11' with options: None
+2024-05-27 04:13:45.981 +00:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[id], [c].[course_name], [c].[created_at], [c].[normalized_course_name], [c].[updated_at]
+FROM [Course] AS [c]
+2024-05-27 04:14:09.239 +00:00 [INF] Performance GetAllCoursesQuery, TraceId: 00-456d06ae5d32bb27ae37d245a45c1b6d-5edde7575146811e-00, Duration: 27234ms
+2024-05-27 04:14:09.279 +00:00 [INF] Handled IList`1, TraceId: 00-456d06ae5d32bb27ae37d245a45c1b6d-5edde7575146811e-00, Capacity: 4, Count: 4, Item: 
+2024-05-27 04:14:09.285 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Egress.Application.Queries.Course.GetAllCourses.GetAllCoursesQueryResponse, Egress.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-27 04:14:09.402 +00:00 [INF] Executed action Egress.API.Controllers.CourseController.GetAllAsync (Egress.API) in 33327.0442ms
+2024-05-27 04:14:09.402 +00:00 [INF] Executed endpoint 'Egress.API.Controllers.CourseController.GetAllAsync (Egress.API)'
+2024-05-27 04:14:09.407 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/v1/course - - - 200 512 application/json;+charset=utf-8;+ver=1 33413.5193ms
+2024-05-27 04:15:00.695 +00:00 [INF] Now listening on: http://[::]:80
+2024-05-27 04:15:00.722 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-27 04:15:00.722 +00:00 [INF] Hosting environment: Development
+2024-05-27 04:15:00.722 +00:00 [INF] Content root path: /app/
+2024-05-27 04:15:17.125 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/v1/course - -
+2024-05-27 04:15:17.186 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 04:15:17.203 +00:00 [INF] Executing endpoint 'Egress.API.Controllers.CourseController.GetAllAsync (Egress.API)'
+2024-05-27 04:15:17.224 +00:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync() on controller Egress.API.Controllers.CourseController (Egress.API).
+2024-05-27 04:15:17.233 +00:00 [INF] Handling GetAllCoursesQuery, TraceId: 00-d77b812403bbea65b1963462a5b4611d-e61352ea2995c89f-00, 
+2024-05-27 04:15:17.728 +00:00 [WRN] No store type was specified for the decimal property 'SalaryRange' on entity type 'Employment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-05-27 04:15:17.828 +00:00 [INF] Entity Framework Core 6.0.11 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.11' with options: None
+2024-05-27 04:15:18.615 +00:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[id], [c].[course_name], [c].[created_at], [c].[normalized_course_name], [c].[updated_at]
+FROM [Course] AS [c]
+2024-05-27 04:15:18.676 +00:00 [INF] Performance GetAllCoursesQuery, TraceId: 00-d77b812403bbea65b1963462a5b4611d-e61352ea2995c89f-00, Duration: 1442ms
+2024-05-27 04:15:18.756 +00:00 [INF] Handled IList`1, TraceId: 00-d77b812403bbea65b1963462a5b4611d-e61352ea2995c89f-00, Capacity: 4, Count: 4, Item: 
+2024-05-27 04:15:18.765 +00:00 [INF] Executing OkObjectResult, writing value of type 'Egress.API.Models.GenericHttpResponse'.
+2024-05-27 04:15:18.893 +00:00 [INF] Executed action Egress.API.Controllers.CourseController.GetAllAsync (Egress.API) in 1664.6951ms
+2024-05-27 04:15:18.894 +00:00 [INF] Executed endpoint 'Egress.API.Controllers.CourseController.GetAllAsync (Egress.API)'
+2024-05-27 04:15:18.901 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/v1/course - - - 200 602 application/json;+charset=utf-8;+ver=1 1777.1504ms

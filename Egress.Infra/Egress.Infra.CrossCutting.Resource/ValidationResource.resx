@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="VALIDATION_NOT_EMPTY" xml:space="preserve">
+        <value>[VA0001] {PropertyName} cannot be empty</value>
+    </data>
+    <data name="VALIDATION_NOT_NULL" xml:space="preserve">
+        <value>[VA0002] {PropertyName} cannot be null</value>
+    </data>
+    <data name="VALIDATION_GREATER_THEN_OR_EQUAL" xml:space="preserve">
+        <value>[VA0003] {PropertyName} must be greater than {ComparisonValue}</value>
+    </data>
+    <data name="VALIDATION_INVALID_FORMAT" xml:space="preserve">
+        <value>[VA0004] {0} contains invalid format{1}</value>
+    </data>
+    <data name="VALIDATION_CONTAINS_UNSUPPORTED_FORMAT" xml:space="preserve">
+        <value>[VA0005] {0} contains unsupported format{1}</value>
+    </data>
+    <data name="VALIDATION_IS_LIMITED_TO" xml:space="preserve">
+        <value>[VA0006] {0} is limited to {1}</value>
+    </data>
+    <data name="VALIDATION_IS_REQUIRED" xml:space="preserve">
+        <value>[VA0008] {0} is required</value>
+    </data>
+    <data name="VALIDATION_IS_INVALID" xml:space="preserve">
+        <value>[VA0007] {PropertyName} is invalid</value>
+    </data>
+    <data name="VALIDATION_COURSE_MUST_BE_EMPTY" xml:space="preserve">
+        <value>[VA0009] Course parameter needs to be empty for this PersonType</value>
+    </data>
+</root>
