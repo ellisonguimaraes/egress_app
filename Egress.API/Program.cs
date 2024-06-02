@@ -43,7 +43,7 @@ var app = builder.Build();
 
 // Configure static files
 var completePath = Path.Combine(Path.GetPathRoot(Directory.GetCurrentDirectory())!, STATIC_FILE_LOCAL_FILES_PATH);
-
+Console.WriteLine(completePath);
 app.UseFileServer(new FileServerOptions
 {
     FileProvider = new PhysicalFileProvider(completePath),
