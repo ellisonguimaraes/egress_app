@@ -1,0 +1,21 @@
+﻿networks:
+  backend:
+    name: backend
+    external: true
+
+services:
+  egress_api:
+    container_name: egress_api
+    image: egress_api
+    build:
+      context: .
+      dockerfile: Egress.API/Development.Dockerfile
+    ports:
+      - "5020:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - /home/ellison/source/repos/egress-backend/src/egress_app/Egress.API/files:/files
+    networks:
+      - backend
