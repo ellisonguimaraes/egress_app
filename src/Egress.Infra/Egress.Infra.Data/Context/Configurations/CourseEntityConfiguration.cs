@@ -10,7 +10,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class CourseEntityConfiguration : BaseEntityConfiguration<Course>
 {
     #region Constants
-    private const string TABLE_NAME = "Course";
+    private const string TABLE_NAME = "course";
     private const string COURSE_NAME_DB_PROPERTY_NAME = "course_name";
     private const byte COURSE_NAME_DB_PROPERTY_LENGTH = 100;
     private const string NORMALIZED_COURSE_NAME_DB_PROPERTY_NAME = "normalized_course_name";

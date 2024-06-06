@@ -2,6 +2,7 @@ using Egress.API.Middlewares;
 using Egress.Infra.CrossCutting.IoC;
 using Egress.Infra.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -22,7 +23,10 @@ builder.Logging.SerilogConfiguration(builder.Configuration);
 builder.Services.AddControllers().AddNewtonsoftJson();
 
 // EF Configuration
-builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration.GetConnectionString(EGRESS_CONNECTION_STRING)!);
+builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+{
+    opt.UseNpgsql(builder.Configuration.GetConnectionString(EGRESS_CONNECTION_STRING)!);
+});
 
 // Versioning Configuration
 builder.Services.AddApiVersioningConfiguration(builder.Configuration);

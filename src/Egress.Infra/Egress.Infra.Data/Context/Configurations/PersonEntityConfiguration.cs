@@ -10,7 +10,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class PersonEntityConfiguration : BaseEntityConfiguration<Person>
 {
     #region Constants
-    private const string TABLE_NAME = "Person";
+    private const string TABLE_NAME = "person";
     private const string CPF_DB_PROPERTY_NAME = "cpf";
     private const byte CPF_DB_PROPERTY_LENGTH = 11;
     private const string NAME_DB_PROPERTY_NAME = "name";
