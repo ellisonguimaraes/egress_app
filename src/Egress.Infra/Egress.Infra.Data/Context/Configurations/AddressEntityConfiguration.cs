@@ -10,7 +10,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class AddressEntityConfiguration : BaseEntityConfiguration<Address>
 {
     #region Constants
-    private const string TABLE_NAME = "Address";
+    private const string TABLE_NAME = "address";
     private const string STATE_DB_PROPERTY_NAME = "state";
     private const byte STATE_DB_PROPERTY_LENGTH = 45;
     private const string COUNTRY_DB_PROPERTY_NAME = "country";

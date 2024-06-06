@@ -10,7 +10,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class EmploymentEntityConfiguration : BaseEntityConfiguration<Employment>
 {
     #region Constants
-    private const string TABLE_NAME = "Employment";
+    private const string TABLE_NAME = "employment";
     private const string ROLE_DB_PROPERTY_NAME = "role";
     private const byte ROLE_DB_PROPERTY_LENGTH = 150;
     private const string ENTERPRISE_DB_PROPERTY_NAME = "enterprise";

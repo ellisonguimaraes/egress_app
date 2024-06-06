@@ -10,7 +10,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class TestimonyEntityConfiguration : BaseEntityConfiguration<Testimony>
 {
     #region Constants
-    private const string TABLE_NAME = "Testimony";
+    private const string TABLE_NAME = "testimony";
     private const string CONTENT_DB_PROPERTY_NAME = "content";
     private const byte CONTENT_DB_PROPERTY_LENGTH = 100;
     private const string PERSON_ID_DB_PROPERTY_NAME = "person_id";

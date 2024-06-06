@@ -7,7 +7,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class ContinuingEducationConfiguration : BaseEntityConfiguration<ContinuingEducation>
 {
     #region Constants
-    private const string TABLE_NAME = "ContinuingEducation";
+    private const string TABLE_NAME = "continuingeducation";
     private const string IS_PUBLIC_DB_PROPERTY_NAME = "is_public";
     private const string HAS_CERTIFICATION_DB_PROPERTY_NAME = "has_certification";
     private const string HAS_SPECIALIZATION_DB_PROPERTY_NAME = "has_specialization";

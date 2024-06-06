@@ -10,7 +10,7 @@ namespace Egress.Infra.Data.Context.Configurations;
 public class HighlightsEntityConfiguration : BaseEntityConfiguration<Highlights>
 {
     #region Constants
-    private const string TABLE_NAME = "Highlights";
+    private const string TABLE_NAME = "highlights";
     private const string TITLE_DB_PROPERTY_NAME = "title";
     private const byte TITLE_DB_PROPERTY_LENGTH = 200;
     private const string DESCRIPTION_DB_PROPERTY_NAME = "description";
