@@ -4,15 +4,15 @@ CREATE TABLE person (
     id UUID NOT NULL,
 	cpf VARCHAR(11) NOT NULL,
 	name VARCHAR(200) NOT NULL,
-	birth_date TIMESTAMP,
+	birth_date TIMESTAMP WITH TIME ZONE,
 	email VARCHAR(80),
 	phone_number VARCHAR(45),
 	perfil_image_src VARCHAR(200),
 	expose_data BOOLEAN NOT NULL,
 	can_receive_message BOOLEAN NOT NULL,
 	person_type SMALLINT NOT NULL,
-	created_at TIMESTAMP NOT NULL,
-	updated_at TIMESTAMP NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT person_pk PRIMARY KEY (id)
 );
 
@@ -24,8 +24,8 @@ CREATE TABLE continuingeducation (
 	has_master_degree BOOLEAN NOT NULL,
 	has_doctorate_degree BOOLEAN NOT NULL,
 	person_id UUID NOT NULL,
-	created_at TIMESTAMP NOT NULL,
-	updated_at TIMESTAMP NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT continuing_education_pk PRIMARY KEY (id)
 );
 
@@ -35,8 +35,8 @@ CREATE TABLE address (
 	country VARCHAR(45) NOT NULL,
 	is_public BOOLEAN NOT NULL,
 	person_id UUID NOT NULL,
-	created_at TIMESTAMP NOT NULL,
-	updated_at TIMESTAMP NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT address_pk PRIMARY KEY (id)
 );
 
@@ -44,8 +44,8 @@ CREATE TABLE course (
 	id UUID NOT NULL,
 	course_name VARCHAR(80) NOT NULL,
 	normalized_course_name VARCHAR(80) NOT NULL,
-	created_at TIMESTAMP NOT NULL,
-	updated_at TIMESTAMP NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT course_pk PRIMARY KEY (id)
 );
 

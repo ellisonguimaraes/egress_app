@@ -38,6 +38,8 @@ public class ApplicationDbContext : DbContext
         new TestimonyEntityConfiguration().Configure(modelBuilder.Entity<Testimony>());
         new ContinuingEducationConfiguration().Configure(modelBuilder.Entity<ContinuingEducation>());
         
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        
         base.OnModelCreating(modelBuilder);
     }
 }
