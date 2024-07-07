@@ -58,8 +58,8 @@ CREATE TABLE personcourse (
 	modality SMALLINT NOT NULL,
 	person_id UUID NOT NULL,
 	course_id UUID NOT NULL,
-	created_at SMALLINT NOT NULL,
-	updated_at SMALLINT NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT personcourse_pk PRIMARY KEY (id)
 );
 
@@ -72,8 +72,8 @@ CREATE TABLE highlights (
 	advertising_image_src VARCHAR(200),
 	veracity_files_src TEXT,
 	person_id UUID NOT NULL,
-	created_at SMALLINT NOT NULL,
-	updated_at SMALLINT NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT highlights_pk PRIMARY KEY (id)
 );
 
@@ -82,8 +82,8 @@ CREATE TABLE testimony (
 	content TEXT NOT NULL,
 	was_accepted BOOLEAN NOT NULL,
 	person_id UUID NOT NULL,
-	created_at SMALLINT NOT NULL,
-	updated_at SMALLINT NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT testimony_pk PRIMARY KEY (id)
 );
 
@@ -94,11 +94,11 @@ CREATE TABLE employment (
 	salary_range MONEY,
 	is_public_initiative BOOLEAN NOT NULL,
 	is_public BOOLEAN NOT NULL,
-	start_date SMALLINT NOT NULL,
-	end_date SMALLINT,
+	start_date TIMESTAMP WITH TIME ZONE NOT NULL,
+	end_date TIMESTAMP WITH TIME ZONE,
 	person_id UUID NOT NULL,
-	created_at SMALLINT NOT NULL,
-	updated_at SMALLINT NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
 	CONSTRAINT employment_pk PRIMARY KEY (id)
 );
 
