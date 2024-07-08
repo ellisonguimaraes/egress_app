@@ -1,3 +1,4 @@
+using Egress.Application.Queries.Responses;
 using Egress.Domain.Enums;
 using Newtonsoft.Json;
 
@@ -31,4 +32,13 @@ public class GetPaginateEgressQueryResponse
 
     [JsonProperty("course")]
     public string Course { get; set; }
+    
+    [JsonProperty("address")]
+    public AddressCommandResponse Address { get; set; }
+    
+    [JsonProperty("employment")]
+    public EmploymentCommandResponse? Employment { get; set; }
+    
+    [JsonProperty("continuing_education")]
+    public ContinuingEducationCommandResponse ContinuingEducation { get; set; }
 }

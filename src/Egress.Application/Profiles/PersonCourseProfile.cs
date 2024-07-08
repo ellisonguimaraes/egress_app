@@ -26,6 +26,9 @@ public class PersonCourseProfile : Profile
             .ForMember(dest => dest.Modality, opt => opt.MapFrom(src => src.Modality))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Person.Email))
             .ForMember(dest => dest.FinalSemester, opt => opt.MapFrom(src => src.FinalSemester))
-            .ForMember(dest => dest.Course, opt => opt.MapFrom(src => src.Course.CourseName));
+            .ForMember(dest => dest.Course, opt => opt.MapFrom(src => src.Course.CourseName))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Person.Address))
+            .ForMember(dest => dest.ContinuingEducation, opt => opt.MapFrom(src => src.Person.ContinuingEducation))
+            .ForMember(dest => dest.Employment, opt => opt.MapFrom(src => src.Person.Employment));
     }
 }
