@@ -1,4 +1,5 @@
 using AutoMapper;
+using Egress.Application.Queries.Responses;
 using Egress.Domain.Entities;
 using Egress.Domain.Utils;
 using Egress.Infra.Data.Repositories.Interfaces;
@@ -54,7 +55,18 @@ public class GetPaginateEgressQueryHandler : IRequestHandler<GenericGetPaginateQ
             egress.Email = string.Empty;
             egress.Name = string.Empty;
         }
+        
+        egress.Address = egress.Address is not null && !(bool)egress.Address.IsPublic? default : egress.Address;
+        egress.ContinuingEducation = egress.ContinuingEducation is not null && !egress.ContinuingEducation.IsPublic? default : egress.ContinuingEducation;
 
+        if (egress.Employment is not null)
+        {
+            egress.Employment.SalaryRange = default;
+            
+            if (!(bool)egress.Employment.IsPublic)
+                egress.Employment = null;
+        }
+        
         return egress;
     }
 }

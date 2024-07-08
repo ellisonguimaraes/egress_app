@@ -62,5 +62,7 @@ public class PersonCourseRepository : Repository<PersonCourse>, IPersonCourseRep
             .Include(pc => pc.Person)
                 .ThenInclude(p => p.Highlights)
             .Include(pc => pc.Person)
-                .ThenInclude(p => p.Testimonies);
+                .ThenInclude(p => p.Testimonies)
+            .Include(pc => pc.Person)
+                .ThenInclude(p => p.ContinuingEducation);
 }
