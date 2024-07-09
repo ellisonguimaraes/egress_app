@@ -20,6 +20,7 @@ public class PersonCourseProfile : Profile
         CreateMap<PersonCourse, GetPaginateEgressQueryResponse>()
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Person.Name))
             .ForMember(dest => dest.ExposeData, opt => opt.MapFrom(src => src.Person.CanExposeData))
+            .ForMember(dest => dest.CanReceiveMessage, opt => opt.MapFrom(src => src.Person.CanReceiveMessage))
             .ForMember(dest => dest.Mat, opt => opt.MapFrom(src => src.Mat))
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Person.Id))
             .ForMember(dest => dest.Level, opt => opt.MapFrom(src => src.Level))

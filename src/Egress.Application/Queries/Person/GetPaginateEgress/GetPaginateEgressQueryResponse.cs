@@ -17,6 +17,9 @@ public class GetPaginateEgressQueryResponse
 
     [JsonProperty("expose_data")]
     public bool ExposeData { get; set; }
+    
+    [JsonProperty("can_receive_message")]
+    public bool CanReceiveMessage { get; set; }
 
     [JsonProperty("final_semester")]
     public string? FinalSemester { get; set; }
