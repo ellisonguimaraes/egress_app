@@ -107,12 +107,19 @@ public class PersonRepository : Repository<Person>, IPersonRepository
 
     private void UpdateNestedObjects(Person source, Person destination)
     {
-        destination.Employment ??= new Employment { CreatedAt = DateTime.UtcNow };
-        UpdateProperty(source.Employment, destination.Employment, src => {
-            src.Id = destination.Employment!.Id;
-            src.PersonId = destination.Id;
-            src.UpdatedAt = src.CreatedAt = DateTime.UtcNow;
-        });
+        if (source.Employment is null)
+        {
+            destination.Employment = default;
+        }
+        else
+        {
+            destination.Employment ??= new Employment { CreatedAt = DateTime.UtcNow };
+            UpdateProperty(source.Employment, destination.Employment, src => {
+                src.Id = destination.Employment!.Id;
+                src.PersonId = destination.Id;
+                src.UpdatedAt = src.CreatedAt = DateTime.UtcNow;
+            });
+        }
 
         destination.Address ??= new Address { CreatedAt = DateTime.UtcNow };
         UpdateProperty(source.Address, destination.Address, src => {
