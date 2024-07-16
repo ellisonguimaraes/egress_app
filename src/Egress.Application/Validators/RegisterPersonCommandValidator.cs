@@ -45,9 +45,6 @@ public class RegisterPersonCommandValidator : AbstractValidator<RegisterPersonCo
         RuleFor(p => p.Address)
             .NotNull().WithMessage(ValidationResource.VALIDATION_NOT_NULL);
         
-        RuleFor(p => p.Employment)
-            .NotNull().WithMessage(ValidationResource.VALIDATION_NOT_NULL);
-        
         RuleFor(p => p.ContinuingEducation)
             .NotNull().WithMessage(ValidationResource.VALIDATION_NOT_NULL);
 
