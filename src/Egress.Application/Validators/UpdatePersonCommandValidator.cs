@@ -33,6 +33,9 @@ public class UpdatePersonCommandValidator : AbstractValidator<UpdatePersonComman
 
         RuleFor(p => p.Address)
             .NotNull().WithMessage(ValidationResource.VALIDATION_NOT_NULL);
+        
+        RuleFor(p => p.ContinuingEducation)
+            .NotNull().WithMessage(ValidationResource.VALIDATION_NOT_NULL);
 
         RuleFor(p => p.Address)
             .SetValidator(new AddressEntryModelValidator()!)
