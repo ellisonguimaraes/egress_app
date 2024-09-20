@@ -30,7 +30,7 @@ public class RegisterPersonCommandHandler : IRequestHandler<RegisterPersonComman
         
         var person = _mapper.Map<Domain.Entities.Person>(request);
         person = await _personRepository.CreateAsync(person);
-
+        
         return new GenericCreatePersonCommandResponse{
             PersonId = person.Id
         };

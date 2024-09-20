@@ -18,12 +18,14 @@ public class CreateBasicPersonBatchCommandHandler : IRequestHandler<CreateBasicP
 
     private readonly IPersonRepository _personRepository;
     private readonly ICourseRepository _courseRepository;
+    private readonly IPersonCourseRepository _personCourseRepository;
     private readonly IMapper _mapper;
 
-    public CreateBasicPersonBatchCommandHandler(IPersonRepository personRepository, ICourseRepository courseRepository, IMapper mapper)
+    public CreateBasicPersonBatchCommandHandler(IPersonRepository personRepository, ICourseRepository courseRepository, IPersonCourseRepository personCourseRepository, IMapper mapper)
     {
         _personRepository = personRepository;
         _courseRepository = courseRepository;
+        _personCourseRepository = personCourseRepository;
         _mapper = mapper;
     }
 
@@ -66,8 +68,7 @@ public class CreateBasicPersonBatchCommandHandler : IRequestHandler<CreateBasicP
     /// <returns>Created person</returns>
     private async Task CreatePersonAsync(EgressCSVFile egress)
     {
-        if (await _personRepository.GetByCpfAsync(egress.Cpf) is not null)
-            throw new BusinessException(string.Format(ErrorCodeResource.ALREADY_EXISTS, USER_WITH_THIS_CPF_ALREADY_EXISTS, string.Empty));
+        await ValidatePersonAsync(egress);
 
         var course = await GetCourseByNameAsync(egress.CourseName);
 
@@ -94,6 +95,18 @@ public class CreateBasicPersonBatchCommandHandler : IRequestHandler<CreateBasicP
             throw new BusinessException(string.Format(ErrorCodeResource.NOT_FOUND_ERROR, $"Course name {courseName}"));
         
         return course;
+    }
+
+    private async Task ValidatePersonAsync(EgressCSVFile egress)
+    {
+        if (string.IsNullOrWhiteSpace(egress.Mat))
+            throw new BusinessException(string.Format(ErrorCodeResource.ALREADY_EXISTS, "Matricula not informed", string.Empty));
+        
+        if (await _personCourseRepository.GetByMatAsync(egress.Mat) is not null)
+            throw new BusinessException(string.Format(ErrorCodeResource.ALREADY_EXISTS, "Matricula already exists", string.Empty));
+        
+        if (!string.IsNullOrWhiteSpace(egress.Cpf) && await _personRepository.GetByCpfAsync(egress.Cpf) is not null)
+            throw new BusinessException(string.Format(ErrorCodeResource.ALREADY_EXISTS, USER_WITH_THIS_CPF_ALREADY_EXISTS, string.Empty));
     }
 }
 
