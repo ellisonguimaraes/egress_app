@@ -22,6 +22,7 @@ using Egress.Application.Queries.Person.GetPersonById;
 using Egress.Application.Queries.Testimony.GetPaginateTestimony;
 using Egress.Application.Queries.Testimony.GetRandomTestimony;
 using Egress.Application.Validators;
+using Egress.Domain;
 using Egress.Domain.Entities;
 using Egress.Infra.Data.Repositories;
 using Egress.Infra.Data.Repositories.Interfaces;
@@ -117,6 +118,10 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IValidator<CreateBasicPersonBatchCommand>, CreateBasicPersonBatchCommandValidator>();
         services.AddScoped<IValidator<UpdateProfileImageCommand>, UpdateProfileImageCommandValidator>();
         services.AddScoped<IValidator<UpdatePersonCommand>, UpdatePersonCommandValidator>();
+        
+        // Settings
+        var aesSettings = configuration.GetSection(nameof(AesSettings)).Get<AesSettings>();
+        services.AddSingleton(aesSettings);
     }
     
     /// <summary>

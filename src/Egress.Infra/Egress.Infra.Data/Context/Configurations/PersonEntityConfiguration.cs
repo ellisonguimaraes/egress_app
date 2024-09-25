@@ -1,6 +1,10 @@
-﻿using Egress.Domain.Entities;
+﻿using System.Text;
+using Egress.Domain;
+using Egress.Domain.Entities;
+using Egress.Domain.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Egress.Infra.Data.Context.Configurations;
 
@@ -9,10 +13,12 @@ namespace Egress.Infra.Data.Context.Configurations;
 /// </summary>
 public class PersonEntityConfiguration : BaseEntityConfiguration<Person>
 {
+    private readonly AesSettings _aesSettings;
+
     #region Constants
     private const string TABLE_NAME = "person";
     private const string CPF_DB_PROPERTY_NAME = "cpf";
-    private const byte CPF_DB_PROPERTY_LENGTH = 11;
+    private const byte CPF_DB_PROPERTY_LENGTH = 128;
     private const string NAME_DB_PROPERTY_NAME = "name";
     private const byte NAME_DB_PROPERTY_LENGTH = 200;
     private const string BIRTH_DATE_DB_PROPERTY_NAME = "birth_date";
@@ -26,6 +32,11 @@ public class PersonEntityConfiguration : BaseEntityConfiguration<Person>
     private const string RECEIVE_MESSAGE_DB_PROPERTY_NAME = "can_receive_message";
     private const string PERSON_TYPE_DB_PROPERTY_NAME = "person_type";
     #endregion
+
+    public PersonEntityConfiguration(AesSettings aesSettings)
+    {
+        _aesSettings = aesSettings;
+    }
     
     public override void Configure(EntityTypeBuilder<Person> builder)
     {
@@ -34,6 +45,15 @@ public class PersonEntityConfiguration : BaseEntityConfiguration<Person>
         builder.Property(e => e.Cpf)
             .HasColumnName(CPF_DB_PROPERTY_NAME)
             .HasMaxLength(CPF_DB_PROPERTY_LENGTH);
+
+        #region Encrypt/Decrypt CPF
+        var encryptConverter = new ValueConverter<string, string> (
+            v => string.IsNullOrWhiteSpace(v)? string.Empty : AesUtils.Encrypt(v, _aesSettings.Key, _aesSettings.IV),
+            v => string.IsNullOrWhiteSpace(v)? string.Empty : AesUtils.Decrypt(v, _aesSettings.Key, _aesSettings.IV));
+
+        builder.Property(e => e.Cpf)
+            .HasConversion(encryptConverter);
+        #endregion
         
         builder.Property(e => e.Name)
             .HasColumnName(NAME_DB_PROPERTY_NAME)
