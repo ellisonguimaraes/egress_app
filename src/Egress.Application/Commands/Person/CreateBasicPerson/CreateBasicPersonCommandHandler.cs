@@ -1,5 +1,7 @@
+using System.Text;
 using AutoMapper;
 using Egress.Domain.Exceptions;
+using Egress.Domain.Utils;
 using Egress.Infra.CrossCutting.Resource;
 using Egress.Infra.Data.Repositories.Interfaces;
 using MediatR;

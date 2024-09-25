@@ -1,4 +1,5 @@
-﻿using Egress.Domain.Entities;
+﻿using Egress.Domain;
+using Egress.Domain.Entities;
 using Egress.Infra.Data.Context.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,8 @@ namespace Egress.Infra.Data.Context;
 /// </summary>
 public class ApplicationDbContext : DbContext
 {
+    private readonly AesSettings _aesSettings;
+    
     public DbSet<Person> Persons { get; set; }
 
     public DbSet<Address> Addresses { get; set; }
@@ -25,11 +28,14 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<ContinuingEducation> ContinuingEducations { get; set; }
     
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, AesSettings aesSettings) : base(options)
+    {
+        _aesSettings = aesSettings;
+    }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        new PersonEntityConfiguration().Configure(modelBuilder.Entity<Person>());
+        new PersonEntityConfiguration(_aesSettings).Configure(modelBuilder.Entity<Person>());
         new CourseEntityConfiguration().Configure(modelBuilder.Entity<Course>());
         new PersonCourseEntityConfiguration().Configure(modelBuilder.Entity<PersonCourse>());
         new AddressEntityConfiguration().Configure(modelBuilder.Entity<Address>());
