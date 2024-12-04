@@ -102,6 +102,17 @@ CREATE TABLE employment (
 	CONSTRAINT employment_pk PRIMARY KEY (id)
 );
 
+CREATE TABLE notes (
+	id UUID NOT NULL,
+	title VARCHAR(300) NOT NULL,
+	content TEXT NOT NULL,
+	was_accepted BOOLEAN NOT NULL,
+	person_id UUID NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
+	CONSTRAINT notes_pk PRIMARY KEY (id)
+);
+
 ALTER TABLE address
 ADD CONSTRAINT fk_address_person
 FOREIGN KEY (person_id) REFERENCES person(id);
@@ -141,6 +152,10 @@ FOREIGN KEY (person_id) REFERENCES person(id);
 ALTER TABLE continuingeducation
 ADD CONSTRAINT uc_continuing_education_person_id
 UNIQUE (person_id);
+
+ALTER TABLE notes
+ADD CONSTRAINT fk_notes_person
+FOREIGN KEY (person_id) REFERENCES person(id);
 
 INSERT INTO person (id, cpf, name, birth_date, sex, email, phone_number, expose_data, person_type, created_at, updated_at) VALUES
 ('4df17a6b-3097-47b0-b934-f9c5d906c581', '12365498798', 'Ellison', convert(datetime2,'18-06-12 10:34:09 PM',5), 0, 'ellison.guimaraes@gmail.com', '73988991122', 1, 1, convert(datetime2,'18-06-12 10:34:09 PM',5), convert(datetime2,'18-06-12 10:34:09 PM',5)),

@@ -34,5 +34,7 @@ public class Person : BaseEntity
     public IList<Highlights> Highlights { get; set; }
     
     public IList<Testimony> Testimonies { get; set; }
+    
+    public IList<Note> Notes { get; set; }
     #endregion
 }

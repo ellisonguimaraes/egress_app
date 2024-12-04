@@ -29,6 +29,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Testimony> Testimonies { get; set; }
     
     public DbSet<ContinuingEducation> ContinuingEducations { get; set; }
+    
+    public DbSet<Note> Notes { get; set; }
     #endregion
 
     #region Views
@@ -63,6 +65,7 @@ public class ApplicationDbContext : DbContext
         new HighlightsEntityConfiguration().Configure(modelBuilder.Entity<Highlights>());
         new TestimonyEntityConfiguration().Configure(modelBuilder.Entity<Testimony>());
         new ContinuingEducationConfiguration().Configure(modelBuilder.Entity<ContinuingEducation>());
+        new NoteEntityConfiguration().Configure(modelBuilder.Entity<Note>());
 
         modelBuilder.Entity<TotalByStateView>().ToView("total_by_state_view").HasNoKey();
         modelBuilder.Entity<TotalOutsideBrazil>().ToView("total_outside_brazil").HasNoKey();
