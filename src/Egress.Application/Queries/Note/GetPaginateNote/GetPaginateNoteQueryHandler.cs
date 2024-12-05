@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Egress.Application.Queries.Note.GetPaginateNote;
 
-public class GetPaginateNoteQueryHandler : IRequestHandler<GenericGetPaginateQuery<GenericGetPaginateQueryResponse<GetPaginateNoteQueryResponse>>, GenericGetPaginateQueryResponse<GetPaginateNoteQueryResponse>>
+public class GetPaginateNoteQueryHandler : IRequestHandler<GenericGetPaginateQuery<GenericGetPaginateQueryResponse<NoteQueryResponse>>, GenericGetPaginateQueryResponse<NoteQueryResponse>>
 {
     #region Constants
     private const string ORDER_BY_PROPERTY_DEFAULT = "CreatedAt";
@@ -20,7 +20,7 @@ public class GetPaginateNoteQueryHandler : IRequestHandler<GenericGetPaginateQue
         _mapper = mapper;
     }
     
-    public async Task<GenericGetPaginateQueryResponse<GetPaginateNoteQueryResponse>> Handle(GenericGetPaginateQuery<GenericGetPaginateQueryResponse<GetPaginateNoteQueryResponse>> request, CancellationToken cancellationToken)
+    public async Task<GenericGetPaginateQueryResponse<NoteQueryResponse>> Handle(GenericGetPaginateQuery<GenericGetPaginateQueryResponse<NoteQueryResponse>> request, CancellationToken cancellationToken)
     {
         var paginationParameters = new PaginationParameters(request.PageNumber, request.PageSize);
 
@@ -30,12 +30,22 @@ public class GetPaginateNoteQueryHandler : IRequestHandler<GenericGetPaginateQue
         var notes = await _notesRepository.GetPaginate(
             paginationParameters, orderByProperty, query);
 
-        var result = new GenericGetPaginateQueryResponse<GetPaginateNoteQueryResponse>(
-            notes.Select(n => _mapper.Map<GetPaginateNoteQueryResponse>(n)),
+        var result = new GenericGetPaginateQueryResponse<NoteQueryResponse>(
+            notes.Select(BuildPaginateNoteQueryResponse),
             notes.CurrentPage,
             notes.PageSize,
             notes.TotalCount);
 
         return result;
+    }
+
+    private NoteQueryResponse BuildPaginateNoteQueryResponse(Domain.Entities.Note note)
+    {
+        var noteQueryResponse = _mapper.Map<NoteQueryResponse>(note);
+        
+        if (noteQueryResponse.Content.Length > 140)
+            noteQueryResponse.Content = noteQueryResponse.Content[..140] + "...";
+        
+        return noteQueryResponse;
     }
 }

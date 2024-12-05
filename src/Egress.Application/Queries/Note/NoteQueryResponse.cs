@@ -2,9 +2,9 @@ using Egress.Application.Queries.Responses;
 using Egress.Domain.Enums;
 using Newtonsoft.Json;
 
-namespace Egress.Application.Queries.Note.GetPaginateNote;
+namespace Egress.Application.Queries.Note;
 
-public class GetPaginateNoteQueryResponse : NoteCommandResponse
+public class NoteQueryResponse : NoteCommandResponse
 {
     [JsonProperty("author")]
     public string Author { get; set; }

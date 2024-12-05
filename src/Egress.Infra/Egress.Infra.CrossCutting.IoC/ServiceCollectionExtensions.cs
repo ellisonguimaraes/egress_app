@@ -3,6 +3,8 @@ using Egress.Application.Behaviors;
 using Egress.Application.Commands.Highlights.AcceptHighlights;
 using Egress.Application.Commands.Highlights.DeleteHighlights;
 using Egress.Application.Commands.Highlights.RequestForHighlights;
+using Egress.Application.Commands.Note.AcceptNote;
+using Egress.Application.Commands.Note.CreateNote;
 using Egress.Application.Commands.Person.CreateBasicPerson;
 using Egress.Application.Commands.Person.CreateBasicPersonBatch;
 using Egress.Application.Commands.Person.DeletePerson;
@@ -87,8 +89,10 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(typeof(UpdatePersonCommandHandler).Assembly);      
         services.AddMediatR(typeof(DeleteHighlightsCommandHandler).Assembly);      
         services.AddMediatR(typeof(DeleteTestimonyCommandHandler).Assembly);      
-        services.AddMediatR(typeof(DeletePersonCommandHandler).Assembly);      
-
+        services.AddMediatR(typeof(DeletePersonCommandHandler).Assembly);    
+        services.AddMediatR(typeof(CreateNoteCommandHandler).Assembly);    
+        services.AddMediatR(typeof(AcceptNoteCommandHandler).Assembly);    
+        
         // Queries
         services.AddMediatR(typeof(GetPersonByDocumentQueryHandler).Assembly);
         services.AddMediatR(typeof(GetPaginateEgressQueryHandler).Assembly);

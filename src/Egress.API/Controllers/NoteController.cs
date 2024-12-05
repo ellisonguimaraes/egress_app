@@ -1,7 +1,10 @@
 using System.Text.Json;
 using Egress.API.Models;
+using Egress.Application.Commands.Note.AcceptNote;
+using Egress.Application.Commands.Note.CreateNote;
 using Egress.Application.Queries;
-using Egress.Application.Queries.Note.GetPaginateNote;
+using Egress.Application.Queries.Note;
+using Egress.Application.Queries.Note.GetNoteById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +30,7 @@ public class NoteController : ControllerBase
         [FromQuery(Name = "query")] string query,
         [FromQuery(Name = "order_by")] string orderByProperty)
     {
-        var command = new GenericGetPaginateQuery<GenericGetPaginateQueryResponse<GetPaginateNoteQueryResponse>>(pageNumber, pageSize, query, orderByProperty);
+        var command = new GenericGetPaginateQuery<GenericGetPaginateQueryResponse<NoteQueryResponse>>(pageNumber, pageSize, query, orderByProperty);
 
         var result = await _mediator.Send(command);
 
@@ -45,6 +48,29 @@ public class NoteController : ControllerBase
         
         return Ok(new GenericHttpResponse
         {
+            Data = result
+        });
+    }
+    
+    [HttpGet]
+    [Route("{id:guid}")]
+    public async Task<IActionResult> GetNoteByIdAsync([FromRoute(Name = "id")] Guid id)
+        => await CallCommandHandlerAndBuildResponseAsync(new GetNoteByIdQuery { Id = id });
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateNoteAsync([FromBody] CreateNoteCommand command)
+        => await CallCommandHandlerAndBuildResponseAsync(command);
+    
+    [HttpPut]
+    [Route("accept/{id}")]
+    public async Task<IActionResult> AcceptNoteAsync([FromRoute] Guid id)
+        => await CallCommandHandlerAndBuildResponseAsync(new AcceptNoteCommand { Id = id });
+    
+    private async Task<IActionResult> CallCommandHandlerAndBuildResponseAsync<T>(T command)
+    {
+        var result = await _mediator.Send(command!);
+        
+        return Ok(new GenericHttpResponse{
             Data = result
         });
     }
