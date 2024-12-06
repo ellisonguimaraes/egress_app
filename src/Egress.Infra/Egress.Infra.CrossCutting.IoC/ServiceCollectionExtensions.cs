@@ -3,6 +3,8 @@ using Egress.Application.Behaviors;
 using Egress.Application.Commands.Highlights.AcceptHighlights;
 using Egress.Application.Commands.Highlights.DeleteHighlights;
 using Egress.Application.Commands.Highlights.RequestForHighlights;
+using Egress.Application.Commands.Note.AcceptNote;
+using Egress.Application.Commands.Note.CreateNote;
 using Egress.Application.Commands.Person.CreateBasicPerson;
 using Egress.Application.Commands.Person.CreateBasicPersonBatch;
 using Egress.Application.Commands.Person.DeletePerson;
@@ -15,6 +17,7 @@ using Egress.Application.Queries;
 using Egress.Application.Queries.Course.GetAllCourses;
 using Egress.Application.Queries.Highlights.GetPaginateHighlights;
 using Egress.Application.Queries.Highlights.GetRandomHighlights;
+using Egress.Application.Queries.Note.GetPaginateNote;
 using Egress.Application.Queries.Person.GetPaginateEgress;
 using Egress.Application.Queries.Person.GetPaginatePerson;
 using Egress.Application.Queries.Person.GetPersonByDocument;
@@ -68,6 +71,7 @@ public static class ServiceCollectionExtensions
         services.AddAutoMapper(typeof(PersonCourseProfile));
         services.AddAutoMapper(typeof(ContinuingEducationProfile));
         services.AddAutoMapper(typeof(CourseProfile));
+        services.AddAutoMapper(typeof(NoteProfile));
 
         // Behaviors
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
@@ -85,8 +89,10 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(typeof(UpdatePersonCommandHandler).Assembly);      
         services.AddMediatR(typeof(DeleteHighlightsCommandHandler).Assembly);      
         services.AddMediatR(typeof(DeleteTestimonyCommandHandler).Assembly);      
-        services.AddMediatR(typeof(DeletePersonCommandHandler).Assembly);      
-
+        services.AddMediatR(typeof(DeletePersonCommandHandler).Assembly);    
+        services.AddMediatR(typeof(CreateNoteCommandHandler).Assembly);    
+        services.AddMediatR(typeof(AcceptNoteCommandHandler).Assembly);    
+        
         // Queries
         services.AddMediatR(typeof(GetPersonByDocumentQueryHandler).Assembly);
         services.AddMediatR(typeof(GetPaginateEgressQueryHandler).Assembly);
@@ -98,6 +104,7 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(typeof(GetPersonByIdQueryHandler).Assembly);
         services.AddMediatR(typeof(GetPaginatePersonQueryHandler).Assembly);
         services.AddMediatR(typeof(GetAllCoursesQueryHandler).Assembly);
+        services.AddMediatR(typeof(GetPaginateNoteQueryHandler).Assembly);
 
         // Repositories
         services.AddScoped<ITestimonyRepository, TestimonyRepository>();
@@ -107,6 +114,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICourseRepository, CourseRepository>();
         services.AddScoped<IRepository<Address>, AddressRepository>();
         services.AddScoped<IRepository<Employment>, EmploymentRepository>();
+        services.AddScoped<IRepository<Note>, NoteRepository>();
 
         // Validators
         services.AddScoped<IValidator<GenericGetRandomQuery<IEnumerable<GetPaginateTestimonyQueryResponse>>>, GenericGetRandomQueryValidator<IEnumerable<GetPaginateTestimonyQueryResponse>>>();
